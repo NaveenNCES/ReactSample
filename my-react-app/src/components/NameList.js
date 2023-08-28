@@ -25,7 +25,7 @@ function NameList() {
         }
     ]
 
-    var personList = persons.map(x => <PersonListUI perons={x}></PersonListUI>)
+    var personList = persons.map(x => <PersonListUI perons={x} key={x.id}></PersonListUI>)
 
     return (
         <div>

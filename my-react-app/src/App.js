@@ -12,10 +12,17 @@ import EventBind from './components/EventBind';
 import ParentComponent from './components/ParentComponent';
 import ConditionalRendering from './components/ConditionalRendering';
 import NameList from './components/NameList';
+import Style from './components/Style.js';
+import './components/appStyles.css'
+import './components/appStyles.modules.css'
+import FormSample from './components/FormSample';
+import GetDataFromApi from './components/GetDataFromApi';
 
 function App() {
   return (
     <div className="App">
+      <h1 className='success'>Error</h1>
+      <GetDataFromApi/>
       <SampleFunction />
       <Welcome />
       <JSXSample />
@@ -32,6 +39,8 @@ function App() {
       <ParentComponent />
       <ConditionalRendering />
       <NameList />
+      <Style />
+      <FormSample />
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
