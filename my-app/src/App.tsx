@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import SampleFunction from './components/Sample';
 import Welcome from './components/ClassComponent';
@@ -23,14 +23,14 @@ function App() {
     <div className="App">
       <h1 className='success'>Error</h1>
       <GetDataFromApi/>
-      <SampleFunction />
+      {/* <SampleFunction name={'Ganesh'} children={'This is child'} />
       <Welcome />
       <JSXSample />
       <PropsSampleConst name='Naveen'><p> This is a children props </p></PropsSampleConst>
       <PropsSampleConst name='Mugunthan'>
         <button>SampleButton</button>
       </PropsSampleConst>
-      <PropsSampleConst name='Ram' />
+      <PropsSampleConst name='Ram' children={undefined} />
       <Message />
       <RCESample />
       <EventHandlerFunction />
@@ -40,14 +40,14 @@ function App() {
       <ConditionalRendering />
       <NameList />
       <Style />
-      <FormSample />
+      <FormSample /> */}
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>Naveen</code> and save to reload.
+          Edit <code>src/App.tsx</code> and save to reload.
         </p>
         <a
-          className="App-link" 
+          className="App-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
