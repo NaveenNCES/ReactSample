@@ -21,8 +21,7 @@ import GetDataFromApi from './components/GetDataFromApi';
 function App() {
   return (
     <div className="App">
-      <h1 className='success'>Error</h1>
-      <GetDataFromApi/>
+      <h1 className='success'>Error</h1>  
       {/* <SampleFunction name={'Ganesh'} children={'This is child'} />
       <Welcome />
       <JSXSample />

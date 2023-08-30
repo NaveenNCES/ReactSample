@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import axios from 'axios'
 import { Student } from '../models/studentDetailsDTO'
+import { useNavigate } from 'react-router-dom';
 
+let modelData: Student;
 function GetDataFromApi() {
+    const navigate = useNavigate();
     const [dataList, setDataList] = useState([])
     const [student, setStudentData] = useState({
-        id: '',
-        firtName: '',
+        firstName: '',
         lastName: '',
         rollNumber: '',
         dateOfBirth: '',
@@ -15,16 +17,15 @@ function GetDataFromApi() {
         address: ''
     })
     let dataListSample
-    let modelData: Student
     const getStudentData = async () => {
         await axios.get("http://localhost:22275/api/getStudentDetails")
             .then((response: any) => setDataList(response.data))
             .catch((error: any) => console.log(error));
     }
 
-    dataListSample = dataList.map((x: Student) => <div><h1 key={x.id}  onClick={(e: any) => console.log(e)}>{x.firstName} {x.rollNumber}<span style={{display: "flex", alignItems: "center"}}>
-        <button> Delete</button>
-        </span></h1> </div>)
+    dataListSample = dataList.map((x: Student) => <div><h1 key={x.id}>{x.firstName} {x.rollNumber}<span style={{ alignItems: "center" }}>
+        <button onClick={() => deleteStudentDetail(x.id)}>Delete</button>
+    </span></h1> </div>)
 
     const postStudentDetails = async () => {
         await axios.post("http://localhost:22275/api/postStudentDetails", student)
@@ -36,17 +37,19 @@ function GetDataFromApi() {
         await axios.delete(`http://localhost:22275/api/deleteStudentDetails/${id}`)
             .then((response: any) => console.log(response))
             .catch((error: any) => console.log(error));
+        getStudentData();
+        navigate('/style');
     }
 
     return (
-        <div>
+        <div className=''>
             <button onClick={() => getStudentData()}>GetData </button>
             <div>{dataListSample}</div>
             <form onSubmit={postStudentDetails}>
                 <div>
                     <label>First Name: </label>
                     <input onChange={(e: any) => setStudentData({
-                        ...student, firtName: e.target.value
+                        ...student, firstName: e.target.value
                     })}></input>
                 </div>
                 <div>
